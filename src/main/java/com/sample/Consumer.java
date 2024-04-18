@@ -14,16 +14,18 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Consumer {
     public static void main(String[] args) {
-        String queueName;
+        String queueName = "demo";
+        String url = "tcp://localhost:61616";
         if (args.length > 0) {
             queueName = args[0];
-        } else {
-            queueName = "demo";
+        } 
+        if (args.length == 2) {
+            url = args[1];
         }
         ConnectionFactory factory = new ActiveMQConnectionFactory(
             "admin",
             "adminPassword",
-            "tcp://localhost:61616"
+            url
         );
         Connection connection;
         try {
